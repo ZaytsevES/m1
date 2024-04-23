@@ -1,0 +1,22 @@
+Практическая работа №3
+
+x = 5
+y = 8
+z = 3
+
+# Находим минимум и максимум
+if x + y <= x*y:
+    min_val = x + y
+else:
+    min_val = x*y
+
+max_val = max(x, y, z)
+
+u = min_val / max_val
+
+print("x =", x)
+print("y =", y)
+print("z =", z)
+print("Минимум min{x+y,xy}:", min_val)
+print("Максимум max{x,y,z}:", max_val)
+print("Значение u:", u)
