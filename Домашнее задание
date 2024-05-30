@@ -1,0 +1,46 @@
+def min_in_column(matrix, column):
+    """Возвращает минимальный элемент в указанном столбце матрицы."""
+    min_value = float('inf')
+    for row in matrix:
+        min_value = min(min_value, row[column])
+    return min_value
+
+def get_row_with_min(matrix, min_value):
+    """Возвращает индекс строки, в которой находится минимальный элемент."""
+    for i, row in enumerate(matrix):
+        if min(row) == min_value:
+            return i
+    return -1
+
+def get_non_zero_product(row):
+    """Возвращает произведение ненулевых элементов в векторе."""
+    product = 1
+    for element in row:
+        if element != 0:
+            product *= element
+    return product
+
+# Ввод матрицы
+matrix = []
+with open('matrix.txt', 'r') as file:
+    for line in file:
+        matrix.append([int(x) for x in line.split()])
+
+# Ввод номера столбца
+k = int(input('Введите номер столбца: '))
+
+# Поиск минимального элемента в указанном столбце
+min_value = min_in_column(matrix, k)
+
+# Поиск строки, в которой находится минимальный элемент
+min_row = get_row_with_min(matrix, min_value)
+
+# Извлечение строки в вектор
+row_vector = matrix[min_row]
+
+# Поиск произведения отличных от нуля элементов в строке
+product = get_non_zero_product(row_vector)
+
+# Вывод результатов
+print(f'Минимальный элемент в {k}-ом столбце: {min_value}')
+print(f'Произведение отличных от нуля элементов в {min_row + 1}-ой строке: {product}')
